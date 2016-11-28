@@ -49,6 +49,16 @@ int main()
 		else
 		push(st, k);
 	}
+
+	//проверка заполненности стека
+	bool full;
+	full = my_size(st);
+	if (full == 1)
+		cout << "\nСтек заполнен\n";
+	else
+		cout << "\nЕсть свободное место\n";
+
+
 	int x=1;
 	for (; ;) {
 		x = pop(st);
@@ -61,13 +71,6 @@ int main()
 			cout << x<<endl;
 		}
 	}
-	//проверка заполненности стека
-	bool full;
-	full = my_size(st);
-	if (full == 1)
-		cout << "\n Стек заполнен";
-	else
-		cout << "\n Есть свободное место";
 		_getch();
 	return 0;
 }
