@@ -1,0 +1,73 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+#define MAXSIZE 5
+#define EMPTY -1
+
+struct stack //структура стек
+{
+	int st[MAXSIZE];//стек
+	int top;//индекс вершины стека
+};
+int push(stack *st, int value) //функция помещения элемента в стек
+{
+	if (st->top == MAXSIZE)//если стек заполнен, то
+		return 0;//вернуть 0
+	st->st[st->top] = value;//поместить новый элемент на вершину стека
+	st->top++;//увеличить индекс вершины
+	return 1;//вернуть 1- признак успешного добавления
+}
+int pop(stack *st) //функция извлечения элемента из стека
+{
+	if (st->top == 0)//если стек пуст, то
+		return EMPTY; //вернуть константу EMPTY
+	st->top--;//уменьшить индекс вершины стека на единицу
+	return st->st[st->top];//вернуть значение элемента
+}
+
+bool my_size(stack *st) //функция проверки заполненности списка
+{
+	if (st->top == MAXSIZE)
+		return 1;
+	else
+		return 0;
+}
+
+int main()
+{
+	setlocale(0, "Russian");
+	stack *st = new stack;//выделить память под стек
+	st->top = 0;//инициализировать индекс вершины стека
+	int k;
+	cout << "Введите элементы стека, для завершения введите * \n";
+	for (int i = 0; i < MAXSIZE; i++) {
+		cin >> k;
+		if (!cin)
+			break;
+		else
+		push(st, k);
+	}
+	int x=1;
+	for (; ;) {
+		x = pop(st);
+		if (x == EMPTY) {
+			cout <<"конец списка";
+			break;
+		}
+
+		else {
+			cout << x<<endl;
+		}
+	}
+	//проверка заполненности стека
+	bool full;
+	full = my_size(st);
+	if (full == 1)
+		cout << "\n Стек заполнен";
+	else
+		cout << "\n Есть свободное место";
+		_getch();
+	return 0;
+}
