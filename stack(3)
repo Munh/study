@@ -71,6 +71,6 @@ int main()
 			cout << x<<endl;
 		}
 	}
-		_getch();
+	_getch();
 	return 0;
 }
